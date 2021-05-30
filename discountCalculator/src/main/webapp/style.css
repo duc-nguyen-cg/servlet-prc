@@ -1,0 +1,18 @@
+input {
+    margin: 5px;
+    color: blue;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+#submit {
+    margin-top: 10px;
+    margin-left: 15px;
+    color: white;
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+h1 {
+    color: green;
+}
