@@ -16,6 +16,7 @@ public class UserDAO implements IUserDAO{
     public static final String INSERT_USER = "insert into users"+"(name,email,country) values"+"(?,?,?);";
     public static final String UPDATE_USER_BY_ID = "update users set name = ?, email = ?, country = ? where id = ?;";
     public static final String DELETE_USER_BY_ID = "delete from users where id = ?";
+    public static final String SORT_USERS_BY_NAME = "select * from users order by name";
 
     @Override
     public List<User> selectAllUsers() {
@@ -129,5 +130,79 @@ public class UserDAO implements IUserDAO{
             throwables.printStackTrace();
         }
         return rowDeleted > 0;
+    }
+
+    @Override
+    public List<User> sortById() {
+        List<User> users = new ArrayList<>();
+        Connection connection = SQLConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from users order by id");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return users;
+    }
+
+    @Override
+    public List<User> sortByName() {
+        List<User> users = new ArrayList<>();
+        Connection connection = SQLConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SORT_USERS_BY_NAME);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> searchByCountry(String inputCountry) {
+        List<User> users = new ArrayList<>();
+        Connection connection = SQLConnection.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from users where country like ?");
+            preparedStatement.setString(1, "%"+inputCountry+"%");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return users;
     }
 }

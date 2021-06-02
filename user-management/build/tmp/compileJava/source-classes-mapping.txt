@@ -1,10 +1,10 @@
-com/codegym/controller/UserServlet.java
- com.codegym.controller.UserServlet
+com/codegym/dao/SQLConnection.java
+ com.codegym.dao.SQLConnection
 com/codegym/dao/UserDAO.java
  com.codegym.dao.UserDAO
 com/codegym/model/User.java
  com.codegym.model.User
 com/codegym/dao/IUserDAO.java
  com.codegym.dao.IUserDAO
-com/codegym/dao/SQLConnection.java
- com.codegym.dao.SQLConnection
+com/codegym/controller/UserServlet.java
+ com.codegym.controller.UserServlet

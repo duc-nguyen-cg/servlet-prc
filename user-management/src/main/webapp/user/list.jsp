@@ -17,8 +17,17 @@
 <div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>
+
+        <form>
+            <input type="text" placeholder="Search By Country" name = "search">
+            <button type = "submit">Search</button>
+        </form>
+        <br/>
+
+        <button><a href="users">Default User List</a></button>
+        <button><a href="/users?sort=name">Sort By Name</a></button>
+
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Country</th>
@@ -26,7 +35,6 @@
         </tr>
         <c:forEach var="user" items="${listUser}">
             <tr>
-                <td><c:out value="${user.id}"/></td>
                 <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.email}"/></td>
                 <td><c:out value="${user.country}"/></td>
