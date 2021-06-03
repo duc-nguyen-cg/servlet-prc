@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jar-packaging">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/quadraticSolver_jar/jar-packaging.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
